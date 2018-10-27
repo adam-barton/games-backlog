@@ -8,13 +8,6 @@ class UsersController < ApplicationController
     erb :'/users/login'
   end
   
-  post '/users' do
-    @user = User.create(params)
-     session[:user_id] = @user.id
-      redirect "/users/#{@user.slug}"
-  end
-
-  
   get '/users/:slug' do
     if logged_in?
       @user = User.find_by_slug(params[:slug])
@@ -26,6 +19,20 @@ class UsersController < ApplicationController
     else
      redirect :"/users/login"
     end 
+  end
+  
+    post '/users' do
+    @user = User.create(params)
+     session[:user_id] = @user.id
+      redirect "/users/#{@user.slug}"
+  end
+  
+  post '/users/login' do
+    @user = User.find_by(name: params[:name])
+    if @user && @user.authenticate(params[:password])
+      session[:user_id] = @user.id
+      redirect "/users/#{@user.slug}"  
+    end
   end
   
   
