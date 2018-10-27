@@ -1,4 +1,9 @@
 <h2>Welcome <%= @user.name %></h2>
+<ul>
+<%@user.games.each do |game|%>
+<li><%=game.name%></li>
+</ul>
+<%end%>
 <br><br><br><br><br>
 
 <br>
