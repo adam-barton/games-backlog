@@ -1,3 +1,5 @@
+require 'slugify'
+
 module Slugifiable
   module InstanceMethods
 
