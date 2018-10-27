@@ -1,15 +1,13 @@
 class GamesController < ApplicationController
   
   get '/games/new' do
-    if logged_in?
-      
+    redirect_if_not_logged_in
+
       erb :'/games/new'
-    else
-      redirect "/users/login"
-    end
   end
   
   post '/games' do
+    redirect_if_not_logged_in
     @user = current_user
     @game = Game.create(params)
     
