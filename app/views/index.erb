@@ -1,2 +1,5 @@
 <p> index.erb </p>
-<p><a href="/login">Login</a> | <a href="/users/new">Signup</a></p>
+<p><a href="/users/login">Login</a> | <a href="/users/new">Signup</a></p>
+<%if logged_in?%>
+<a href="/">Home</a>
+<%end%>

@@ -7,9 +7,23 @@
   <body>
     <header>
       <h1>Games Backlog Tracker</h1>
+      <nav>
+        <p>menu</p>
+        <%if !logged_in?%>
+        <p><a href="/users/login">Login</a> | <a href="/users/new">Signup</a></p>
+        <%end%>
+        <%if logged_in?%>
+        <a href="/users/:slug">Home</a>
+        <%end%>
+      </nav>
     </header>
     <div>
       <%=yield%>
     </div>
+    <footer>
+      <%if logged_in?%>
+      <a href="/logout">Log Out</a>
+      <%end%>
+    </footer>
   </body>
 </html>
