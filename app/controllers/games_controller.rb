@@ -6,12 +6,23 @@ class GamesController < ApplicationController
       erb :'/games/new'
   end
   
+  get '/games' do
+    redirect_if_not_logged_in
+    @user = current_user
+    
+    erb :'/games/show'
+  end
+  
+  get '/games/:id/edit' do
+    erb :'/games/edit'    
+  end
+  
   post '/games' do
     redirect_if_not_logged_in
     @user = current_user
     @game = Game.create(params)
     
-    redirect "/users/#{@user.slug}"
+    redirect "/games"
   end
      
   

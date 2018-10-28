@@ -26,7 +26,7 @@ class UsersController < ApplicationController
       if !User.find_by(name: params[:name])
     @user = User.create(params)
      session[:user_id] = @user.id
-      redirect "/users/#{@user.slug}"
+      redirect "/games"
     else
       flash[:message] = "An account with that username already exists. Please sign in."
       
@@ -38,7 +38,7 @@ class UsersController < ApplicationController
     @user = User.find_by(name: params[:name])
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      redirect "/users/#{@user.slug}"  
+      redirect "/games"  
     end
   end
   
