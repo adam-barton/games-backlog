@@ -21,9 +21,16 @@ class UsersController < ApplicationController
   end
   
     post '/users' do
+      binding.pry
+      if !User.find_by(name: params[:name])
     @user = User.create(params)
      session[:user_id] = @user.id
       redirect "/users/#{@user.slug}"
+    else
+      flash[:message] = "An account with that username already exists. Please sign in."
+      
+      redirect "/users/login"
+    end
   end
   
   post '/users/login' do
