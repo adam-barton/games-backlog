@@ -14,7 +14,13 @@ class GamesController < ApplicationController
   end
   
   get '/games/:id/edit' do
-    erb :'/games/edit'    
+    redirect_if_not_logged_in
+    @game = Game.find(params[:id])
+      if @game && @game.user == current_user
+        erb :'/games/edit'    
+      else
+        redirect "/games"
+      end
   end
   
   post '/games' do
