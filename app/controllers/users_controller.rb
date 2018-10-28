@@ -2,6 +2,8 @@ require 'rack-flash'
 
 class UsersController < ApplicationController
   
+  use Rack::Flash
+  
   get '/users/new' do
     erb :'users/new'
   end
@@ -21,7 +23,6 @@ class UsersController < ApplicationController
   end
   
     post '/users' do
-      binding.pry
       if !User.find_by(name: params[:name])
     @user = User.create(params)
      session[:user_id] = @user.id
