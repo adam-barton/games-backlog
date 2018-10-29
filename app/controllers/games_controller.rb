@@ -9,6 +9,7 @@ class GamesController < ApplicationController
   get '/games' do
     redirect_if_not_logged_in
     @user = current_user
+    @games = @user.games
     
     erb :'/games/show'
   end
