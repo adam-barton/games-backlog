@@ -1,5 +1,6 @@
-<p> index.erb </p>
-<p><a href="/users/login">Login</a> | <a href="/users/new">Signup</a></p>
+<h2>Welcome</h2>
 <%if logged_in?%>
-<a href="/">Home</a>
+<a class="btn btn-default" href="/">Home</a>
 <%end%>
+<br>
+<p><a class="btn btn-default" href="/users/login">Login</a> <a class="btn btn-default" href="/users/new">Signup</a></p>

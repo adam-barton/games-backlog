@@ -3,11 +3,25 @@
 <% end %>
 
 <h2>Welcome <%= @user.name %></h2>
-<ul>
-<%@games.each do |game|%>
-<li><%=game.name%>, <%= game.system %>, <%=game.priority%>, <a href="/games/<%=game.id%>/edit">Edit</a> | <a href="/games/<%=game.id%>/delete">Delete</a></li>
-<br>
-<%end%>
-</ul>
+<h3>Your games:</h3>
+
+
+<table class="table">
+
+  <tr>
+    <th>Game Name</th>
+    <th>System/Console</th>
+    <th>Priority</th>
+    <th>Actions</th>
+  </tr>
+  <tr>
+    <%@games.each do |game|%>
+  <td><%=game.name%></td>
+  <td><%= game.system %></td>
+  <td><%=game.priority%></td>
+  <td><a href="/games/<%=game.id%>/edit">Edit</a> | <a href="/games/<%=game.id%>/delete">Delete</a></tr></td>
+  
+  <%end%>
+</table>
 
 <br><br><br><br><br>

@@ -7,13 +7,13 @@
   <body>
     <header>
       <h1>Games Backlog Tracker</h1>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
       <nav>
-        <%if !logged_in?%>
-        <p><a href="/users/login">Login</a> | <a href="/users/new">Signup</a></p>
-        <%end%>
         <%if logged_in?%>
-        <a href="/games">|  Home  |</a>
-        <a href="/games/new">|  Add a game  |</a>
+        <a class="btn btn-default" href="/games">Home</a>
+        <a class="btn btn-default" href="/logout">Log Out</a>
+        <br><br>
+        <a class="btn btn-success" href="/games/new">Add a game</a>
         <%end%>
       </nav>
     </header>
@@ -21,9 +21,7 @@
       <%=yield%>
     </div>
     <footer>
-      <%if logged_in?%>
-      <a href="/logout">Log Out</a>
-      <%end%>
+  
     </footer>
   </body>
 </html>
