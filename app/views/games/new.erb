@@ -1,4 +1,4 @@
-<h2>Add a new game to your list</h2>
+<h2>Add a new game to your list, <%=@user.name%></h2>
 <br>
 <form method="post" action="/games">
   <input id="hidden" type="hidden" name="user_id" value="<%=current_user.id%>">
@@ -15,7 +15,7 @@
     <option value="high">High</option>
   </select>
   <br><br>
-  <input type="submit" value="Create">
+  <input type="submit" value="Create Game">
   <br><br><br>
   
 </form>

@@ -5,22 +5,29 @@ class UsersController < ApplicationController
   use Rack::Flash
   
   get '/users/new' do
+    if logged_in? 
+      redirect "/games"
+    else
     erb :'users/new'
+  end
   end
   
   get '/users/login' do
+      if logged_in? 
+      redirect "/games"
+    else 
     session.clear
     erb :'/users/login'
   end
   
-  get '/users/:slug' do
-    redirect_if_not_logged_in
-      @user = User.find_by_slug(params[:slug])
-        if @user == current_user
-          erb :"/users/show"
-        else 
-          redirect :"/users/login"
-        end
+  # get '/users/:slug' do
+  #   redirect_if_not_logged_in
+  #     @user = User.find_by_slug(params[:slug])
+  #       if @user == current_user
+  #         erb :"/users/show"
+  #       else 
+  #         redirect :"/users/login"
+  #       end
   end
   
     post '/users' do
@@ -47,7 +54,7 @@ class UsersController < ApplicationController
   get '/logout' do
     if logged_in?
       session.clear
-      redirect to '/users/login'
+      redirect to '/'
     else
       redirect to '/'
     end
