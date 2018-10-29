@@ -30,6 +30,17 @@ class GamesController < ApplicationController
     
     redirect "/games"
   end
+  
+  post '/games/:id' do
+    @game = Game.find_by(params[:id])
+    binding.pry
+    @game.update("name" => params[:name], "system" => params[:system], "priority" => params[:priority])
+    @game.save 
+    
+    flash[:message] = "Successfully updated game."
+    
+    redirect "/games"
+  end
      
   
 end

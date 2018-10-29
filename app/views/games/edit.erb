@@ -1,1 +1,22 @@
-<h2>edit.erb</h2>
+<h2>Edit</h2>
+<br>
+<form method="post" action="/games/<%=@game.id%>">
+  
+  
+  <label for="name">Name: </label>
+  <input type="text" name="name" value="<%=@game.name%>" required>
+  <br><br>
+  <label for="system">System/console: </label>
+  <input type="text" name="system" value="<%=@game.system%>" required>
+  <br><br>
+  <label for="priority">Priority: </label>
+  <select name="priority">
+    <option value="low">Low</option>
+    <option value="medium">Medium</option>
+    <option value="high">High</option>
+  </select>
+  <br><br>
+  <input type="submit" value="Edit">
+  <br><br><br>
+  
+</form>
