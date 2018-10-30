@@ -1,6 +1,10 @@
-<% if flash[:message] %>
-  <%= flash[:message] %>
+
+  <% if flash[:message] %>
+  <div class="alert alert-info">
+    <%= flash[:message] %>
+    </div>
 <% end %>
+
 <% if !flash[:message] %>
 <h2>Welcome</h2>
 <%end%>
