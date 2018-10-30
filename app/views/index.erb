@@ -1,4 +1,9 @@
+<% if flash[:message] %>
+  <%= flash[:message] %>
+<% end %>
+<% if !flash[:message] %>
 <h2>Welcome</h2>
+<%end%>
 <%if logged_in?%>
 <a class="btn btn-default" href="/">Home</a>
 <%end%>

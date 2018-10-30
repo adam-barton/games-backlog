@@ -18,16 +18,7 @@ class UsersController < ApplicationController
     else 
     session.clear
     erb :'/users/login'
-  end
-  
-  # get '/users/:slug' do
-  #   redirect_if_not_logged_in
-  #     @user = User.find_by_slug(params[:slug])
-  #       if @user == current_user
-  #         erb :"/users/show"
-  #       else 
-  #         redirect :"/users/login"
-  #       end
+    end
   end
   
     post '/users' do
@@ -46,7 +37,10 @@ class UsersController < ApplicationController
     @user = User.find_by(name: params[:name])
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      redirect "/games"  
+      redirect "/games" 
+    else
+      flash[:message] = "The username or password did not match our records. Please try again"
+      redirect "/"
     end
   end
   
