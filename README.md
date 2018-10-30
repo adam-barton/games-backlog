@@ -11,8 +11,8 @@ Clone this repo, and type the below
     $ cd games-backlog
     $ bundle
     $ shotgun
-    
-    open the IP address in a browser.
+
+open the IP address in a browser.
 
 ## Usage
 
