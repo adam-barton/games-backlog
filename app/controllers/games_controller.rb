@@ -38,8 +38,10 @@ class GamesController < ApplicationController
   
   post '/games/:id' do
     @game = Game.find_by(params[:id])
-    @game.update("name" => params[:name], "system" => params[:system], "priority" => params[:priority])
-    @game.user = current_user
+    @game.name = params[:name]
+    @game.system = params[:system]
+    @game.priority = params[:priority]
+    @game.user_id = current_user.id
     @game.save 
     
     flash[:message] = "Successfully updated game."
