@@ -18,11 +18,12 @@
     </tr>
     <tr>
       <%@games.each do |game|%>
-    <td><%=game.name%></td>
-    <td><%= game.system %></td>
-    <td><%=game.priority%></td>
-    <td><a href="/games/<%=game.id%>/edit">Edit</a> | <a href="/games/<%=game.id%>/delete">Delete</a></tr></td>
-    
+        
+          <td><%=game.name%></td>
+          <td><%= game.system %></td>
+          <td><%=game.priority%></td>
+          <td><a href="/games/<%=game.id%>/edit">Edit</a> | <a href="/games/<%=game.id%>/delete">Delete</a></tr></td>
+        
     <%end%>
   </table>
 </div>
