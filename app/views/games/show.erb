@@ -5,23 +5,22 @@
 <h2>Welcome <%= @user.name %></h2>
 <h3>Your games:</h3>
 
-
-<table class="table">
-
-  <tr>
-    <th>Game Name</th>
-    <th>System/Console</th>
-    <th>Priority</th>
-    <th>Actions</th>
-  </tr>
-  <tr>
-    <%@games.each do |game|%>
-  <td><%=game.name%></td>
-  <td><%= game.system %></td>
-  <td><%=game.priority%></td>
-  <td><a href="/games/<%=game.id%>/edit">Edit</a> | <a href="/games/<%=game.id%>/delete">Delete</a></tr></td>
+<div class="col-xs-12 col-md-8">
+  <table class="table">
   
-  <%end%>
-</table>
-
-<br><br><br><br><br>
+    <tr>
+      <th>Game Name</th>
+      <th>System/Console</th>
+      <th>Priority</th>
+      <th>Actions</th>
+    </tr>
+    <tr>
+      <%@games.each do |game|%>
+    <td><%=game.name%></td>
+    <td><%= game.system %></td>
+    <td><%=game.priority%></td>
+    <td><a href="/games/<%=game.id%>/edit">Edit</a> | <a href="/games/<%=game.id%>/delete">Delete</a></tr></td>
+    
+    <%end%>
+  </table>
+</div>
