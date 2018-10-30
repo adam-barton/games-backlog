@@ -1,25 +1,58 @@
 <!DOCTYPE html>
 <html>
   <head>
-    
     <title>Games Backlog Tracker</title> 
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="public/stylesheets/style.css">
+    <style>
+  body {
+  background-color: #C5E6E9;
+  }
+  
+  h1 {
+    text-align: center;
+    margin: 2%;
+  }
+  
+  .yielded {
+    background-color: white;
+    margin: auto;
+    text-align: center;
+    width: 50%;
+    border: 3px solid black;
+    padding: 10px;
+    
+  }
+  
+  .clearfix:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  height: 0;
+  line-height: 0;
+}
+table {
+    margin: auto;
+    text-align: center
+}
+  
+    </style>
   </head>
   <body>
     <header>
       <h1>Games Backlog Tracker</h1>
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
       <nav>
         <%if logged_in?%>
         <a class="btn btn-default" href="/games">Home</a>
         <a class="btn btn-default" href="/logout">Log Out</a>
-        <br><br>
         <a class="btn btn-success" href="/games/new">Add a game</a>
         <%end%>
       </nav>
     </header>
-    <div>
-      <%=yield%>
-    </div>
+      <div class="yielded clearfix">
+        <%=yield%>
+      </div>
     <footer>
   
     </footer>
