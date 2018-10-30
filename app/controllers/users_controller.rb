@@ -29,7 +29,7 @@ class UsersController < ApplicationController
     else
       flash[:message] = "An account with that username already exists. Please sign in."
       
-      redirect "/users/login"
+      redirect "/"
     end
   end
   

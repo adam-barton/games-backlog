@@ -22,7 +22,6 @@ class GamesController < ApplicationController
     redirect_if_not_logged_in
     @user = User.find_by("id" => session[:user_id])
     @game = Game.create(params)
-    binding.pry
     redirect "/games"
   end
   
