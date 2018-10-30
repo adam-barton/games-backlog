@@ -1,22 +1,21 @@
 <h2>Edit - <%=@game.user.name%></h2>
 <br>
-<form method="post" action="/games/<%=@game.id%>">
-  <input id="hidden" type="hidden" name="user_id" value="<%=current_user.id%>"
-  
-  <label for="name">Name: </label>
-  <input type="text" id="name" name="name" value="<%=@game.name%>" required>
-  <br><br>
-  <label for="system">System/console: </label>
-  <input type="text" id="system" name="system" value="<%=@game.system%>" required>
-  <br><br>
-  <label for="priority">Priority: </label>
-  <select name="priority" id="priority">
-    <option value="low">Low</option>
-    <option value="medium">Medium</option>
-    <option value="high">High</option>
-  </select>
-  <br><br>
-  <input type="submit" value="Edit Game" id="submit" class="btn btn-primary">
-  <br><br><br>
-  
-</form>
+<div class="form-group">
+  <form method="post" action="/games/<%=@game.id%>">
+    <label for="name">Name: </label>
+    <input type="text" id="name" name="name" value="<%=@game.name%>" required>
+    <br><br>
+    <label for="system">System/console: </label>
+    <input type="text" id="system" name="system" value="<%=@game.system%>" required>
+    <br><br>
+    <label for="priority">Priority: </label>
+    <select name="priority" id="priority">
+      <option value="low">Low</option>
+      <option value="medium">Medium</option>
+      <option value="high">High</option>
+    </select>
+    <br><br>
+    <input type="submit" value="Edit Game" id="submit" class="btn btn-primary">
+    <br><br><br>
+  </form>
+</div>
