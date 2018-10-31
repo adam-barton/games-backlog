@@ -6,24 +6,28 @@
 
 <h2>Welcome <%= @user.name %></h2>
 <h3>Your games:</h3>
-
+<%if @user.games.empty?%>
+<h3>You have no games in your list.</h3>
+<%end%>
 <div class="col-xs-12">
   <table class="table">
   
     <tr>
+      <th>#</th>
       <th>Game Name</th>
       <th>System/Console</th>
       <th>Priority</th>
       <th>Actions</th>
     </tr>
     <tr>
-      <%@games.each do |game|%>
-        
+      
+        <%@games.each_with_index do |game, index|%>
+          <td><%=index + 1%></td>
           <td><%=game.name%></td>
           <td><%= game.system %></td>
           <td><%=game.priority%></td>
           <td><a href="/games/<%=game.id%>/edit">Edit</a> | <a href="/games/<%=game.id%>/delete">Delete</a></tr></td>
-        
+          
     <%end%>
   </table>
 </div>
