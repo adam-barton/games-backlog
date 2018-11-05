@@ -1,9 +1,3 @@
-<% if flash[:message] %>
- <div class="alert alert-info">
-  <%= flash[:message] %>
-  </div>
-<% end %>
-
 <h2>Welcome <%= @user.name %></h2>
 <h3>Your games:</h3>
 <%if @user.games.empty?%>

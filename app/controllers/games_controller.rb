@@ -13,7 +13,6 @@ class GamesController < ApplicationController
     
     @user = User.find_by("id" => current_user.id)
   
-
       erb :'/games/new'
   end
   
@@ -21,13 +20,20 @@ class GamesController < ApplicationController
   post '/games' do
     redirect_if_not_logged_in
     @user = User.find_by("id" => session[:user_id])
+
+    if params[:name] != "" && params[:system] != ""
     @game = Game.create(params)
     redirect "/games"
+    else 
+      flash[:message] = "Please enter a valid name/system."
+        redirect "/games/new"
+      end
   end
   
     get '/games/:id/edit' do
     redirect_if_not_logged_in
-    @game = Game.find(params[:id])
+    @game = Game.find_by_id(params[:id])
+    
       if @game && @game.user == current_user
         erb :'/games/edit'    
       else
@@ -36,16 +42,23 @@ class GamesController < ApplicationController
   end
   
   patch '/games/:id' do
+
     @game = Game.find_by_id(params[:id])
-    @game.name = params[:name]
-    @game.system = params[:system]
-    @game.priority = params[:priority]
-    @game.user_id = current_user.id
-    @game.save 
-    
-    flash[:message] = "Successfully updated #{@game.name}."
-    
-    redirect "/games"
+    if @game && @game.user == current_user
+      @game.name = params[:name]
+      @game.system = params[:system]
+      @game.priority = params[:priority]
+      @game.user_id = current_user.id
+      @game.save 
+      
+      flash[:message] = "Successfully updated #{@game.name}."
+      
+      redirect "/games"
+    else 
+      
+      flash[:message] = "You do not have access to that game."
+       redirect "/games"
+      end
   end
   
   get '/games/:id/delete' do

@@ -68,6 +68,7 @@ nav {
     </style>
   </head>
   <body>
+ 
     <header>
       <h1>Games Backlog Tracker</h1>
       <nav>
@@ -78,6 +79,11 @@ nav {
         <%end%>
       </nav>
     </header>
+    <% if flash[:message] %>
+    <div class="alert alert-info">
+     <%= flash[:message] %>
+    </div>
+    <% end %>
       <div class="yielded clearfix">
         <%=yield%>
       </div>
