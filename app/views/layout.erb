@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Games Backlog Tracker</title> 
+    <title>Games Backlog Tracker</title>
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="public/stylesheets/style.css">
     <style>
   body {
   background-color: #BDC6CE;
   }
-  
+
   h1 {
     text-align: center;
     margin: 2%;
   }
-  
+
   .yielded {
     background-color: white;
     margin: auto;
@@ -21,9 +21,9 @@
     width: 65%;
     border: 3px solid black;
     padding: 10px;
-    
+
   }
-  
+
   .clearfix:after {
   content: ".";
   display: block;
@@ -64,20 +64,24 @@ nav {
   width: 100%;
   }
 }
-  
+
     </style>
   </head>
   <body>
- 
+
     <header>
       <h1>Games Backlog Tracker</h1>
       <nav>
         <%if logged_in?%>
         <a class="btn btn-default" href="/games">Home</a>
-        <a class="btn btn-default" href="/logout">Log Out</a>
         <a class="btn btn-success" href="/games/new">Add a game</a>
+        <div class="logout btn btn-default">
+          <form method="post" action="/logout"><input type="submit" value="Logout"></form>
+        </div>
         <%end%>
-      </nav>
+
+
+        </nav>
     </header>
     <% if flash[:message] %>
     <div class="alert alert-info">
@@ -88,7 +92,7 @@ nav {
         <%=yield%>
       </div>
     <footer>
-  
+
     </footer>
   </body>
 </html>
